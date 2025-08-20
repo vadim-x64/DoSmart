@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.project.dosmart.controllers.AddTodoController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Назва справи:"/>
+    <TextField fx:id="_name"/>
+    <Label text="Опис справи:"/>
+    <TextArea fx:id="_description" prefRowCount="4"/>
+    <Label text="Дата дедлайну (опціонально):"/>
+    <DatePicker fx:id="_deadlineDate"/>
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button fx:id="_addButton" text="Створити"/>
+    </HBox>
+</VBox>
