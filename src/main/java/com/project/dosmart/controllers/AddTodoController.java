@@ -20,6 +20,8 @@ public class AddTodoController {
 
     private TodoService _todoService;
     private Stage _stage;
+    private boolean _isEditing = false;
+    private int _editIndex = -1;
 
     public void setTodoService(TodoService todoService) {
         _todoService = todoService;
@@ -29,12 +31,21 @@ public class AddTodoController {
         _stage = stage;
     }
 
-    @FXML
-    private void initialize() {
-        _addButton.setOnAction(e -> createTodo());
+    public void setTodoForEditing(Todo todo, int index) {
+        _isEditing = true;
+        _editIndex = index;
+        _name.setText(todo.getName());
+        _description.setText(todo.getDescription());
+        _deadlineDate.setValue(todo.getDeadlineDate());
+        _addButton.setText("Оновити");
     }
 
-    private void createTodo() {
+    @FXML
+    private void initialize() {
+        _addButton.setOnAction(e -> saveTodo());
+    }
+
+    private void saveTodo() {
         String name = _name.getText();
         String description = _description.getText();
         LocalDate deadlineDate = _deadlineDate.getValue();
@@ -43,13 +54,19 @@ public class AddTodoController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Помилка");
             alert.setHeaderText(null);
-            alert.setContentText("Назва та опис справи є обов'язковими!");
+            alert.setContentText("Назва справи є обов'язковою!");
             alert.showAndWait();
             return;
         }
 
         Todo todo = new Todo(name, description, deadlineDate);
-        _todoService.addTodo(todo);
+
+        if (_isEditing) {
+            _todoService.updateTodo(_editIndex, todo);
+        } else {
+            _todoService.addTodo(todo);
+        }
+
         _stage.close();
     }
 }

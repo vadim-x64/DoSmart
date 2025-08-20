@@ -6,12 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class MainController {
@@ -20,6 +22,8 @@ public class MainController {
     private BorderPane _rootPane;
     @FXML
     private Button _addTodoButton;
+    @FXML
+    private Button _updateTodoButton;
     @FXML
     private ListView<Todo> _todoList;
     @FXML
@@ -40,6 +44,7 @@ public class MainController {
     @FXML
     private void initialize() {
         _addTodoButton.setOnAction(e -> openAddTodoDialog());
+        _updateTodoButton.setOnAction(e -> openUpdateTodoDialog());
 
         _todoList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -56,14 +61,52 @@ public class MainController {
         });
     }
 
+    private void openUpdateTodoDialog() {
+        int selectedIndex = _todoList.getSelectionModel().getSelectedIndex();
+        Todo selectedTodo = _todoList.getSelectionModel().getSelectedItem();
+
+        if (selectedTodo == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Увага");
+            alert.setHeaderText(null);
+            alert.setContentText("Спочатку виберіть справу для оновлення!");
+            alert.showAndWait();
+            return;
+        }
+
+        openTodoDialog(selectedTodo, selectedIndex);
+    }
+
+    private void openTodoDialog(Todo todoToEdit, int editIndex) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/project/dosmart/addTodo.fxml"));
+            Parent root = fxmlLoader.load();
+            AddTodoController controller = fxmlLoader.getController();
+            controller.setTodoService(_todoService);
+            Stage stage = new Stage();
+            controller.setStage(stage);
+
+            if (todoToEdit != null) {
+                controller.setTodoForEditing(todoToEdit, editIndex);
+                stage.setTitle("Оновити справу");
+            } else {
+                stage.setTitle("Додати справу");
+            }
+
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(_primaryStage);
+            stage.showAndWait();
+        } catch (IOException ignored) {
+        }
+    }
+
     private void openAddTodoDialog() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/project/dosmart/addTodo.fxml"));
             Parent root = fxmlLoader.load();
-
             AddTodoController addTodoController = fxmlLoader.getController();
             addTodoController.setTodoService(_todoService);
-
             Stage stage = new Stage();
             addTodoController.setStage(stage);
             stage.setTitle("Додати справу");

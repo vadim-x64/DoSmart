@@ -32,6 +32,13 @@ public class TodoService {
         saveTodo();
     }
 
+    public void updateTodo(int index, Todo updatedTodo) {
+        if (index >= 0 && index < _todos.size()) {
+            _todos.set(index, updatedTodo);
+            saveTodo();
+        }
+    }
+
     private void loadTodos() {
         File file = new File(FILE_PATH);
 
