@@ -64,7 +64,7 @@ public class Main extends Application {
         authController.setStage(authStage);
         authController.setPinCodeService(pinCodeService);
         authStage.setTitle("Авторизація");
-        authStage.setScene(new Scene(root, 500, 500));
+        authStage.setScene(new Scene(root, 700, 700));
         authStage.initModality(Modality.APPLICATION_MODAL);
         authStage.setResizable(true);
         authStage.showAndWait();

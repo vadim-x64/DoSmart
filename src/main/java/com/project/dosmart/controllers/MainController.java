@@ -126,7 +126,7 @@ public class MainController {
             controller.setRemovingMode(removing);
             stage.setResizable(true);
             stage.setTitle("Налаштування пін-кода");
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 700, 700));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
             stage.showAndWait();
@@ -182,7 +182,7 @@ public class MainController {
                 stage.setTitle("Додати справу");
             }
 
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 700, 700));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
             stage.showAndWait();
@@ -200,7 +200,7 @@ public class MainController {
             addTodoController.setStage(stage);
             stage.setResizable(true);
             stage.setTitle("Нове завдання");
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 700, 700));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
             stage.showAndWait();

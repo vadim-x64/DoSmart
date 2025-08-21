@@ -110,7 +110,6 @@ public class AuthController {
 
         if (pin.length() < 4) {
             _messageLabel.setText("Пін-код має містити 4 цифри");
-            _messageLabel.setStyle("-fx-text-fill: red;");
             return;
         }
 
@@ -123,7 +122,6 @@ public class AuthController {
                 startLockoutTimer();
             } else {
                 _messageLabel.setText("Невірний пін-код");
-                _messageLabel.setStyle("-fx-text-fill: red;");
                 clearPinFields();
                 updateAttemptsLabel();
             }
@@ -139,7 +137,6 @@ public class AuthController {
         if (_pinCodeService != null && !_pinCodeService.isLockedOut()) {
             int remaining = _pinCodeService.getRemainingAttempts();
             _attemptsLabel.setText("Залишилось спроб: " + remaining);
-            _attemptsLabel.setStyle("-fx-text-fill: #666666;");
         }
     }
 

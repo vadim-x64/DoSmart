@@ -8,10 +8,10 @@
       style="-fx-background-color: #FFFFFF;">
 
     <padding>
-        <Insets bottom="40.0" left="50.0" right="50.0" top="40.0"/>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>
     </padding>
 
-    <VBox alignment="CENTER" spacing="10">
+    <VBox alignment="CENTER" spacing="8">
         <Label text="🔧️" style="-fx-font-size: 42px;"/>
         <Label text="НАЛАШТУВАННЯ ПІН-КОДА"
                style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
@@ -21,7 +21,7 @@
 
         <VBox spacing="8.0" alignment="CENTER">
             <Label text="ПІН-КОД"
-                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+                   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
             <HBox alignment="CENTER" spacing="8.0">
                 <PasswordField fx:id="_pinField" maxWidth="160" minWidth="160"
                                style="-fx-font-size: 18px; -fx-alignment: center; -fx-background-color: #FFFFFF;
@@ -42,7 +42,7 @@
 
         <VBox spacing="8.0" alignment="CENTER">
             <Label fx:id="_confirmLabel" text="ПІДТВЕРДЖЕННЯ"
-                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+                   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
             <PasswordField fx:id="_confirmPinField" maxWidth="160" minWidth="160"
                            style="-fx-font-size: 18px; -fx-alignment: center; -fx-background-color: #FFFFFF;
                                   -fx-border-color: #CCCCCC; -fx-border-width: 2; -fx-background-radius: 0;
@@ -63,6 +63,6 @@
 
     <HBox alignment="CENTER">
         <Label fx:id="_messageLabel" wrapText="true" textAlignment="CENTER"
-               style="-fx-font-size: 13px; -fx-font-family: 'System';"/>
+               style="-fx-font-size: 14px; -fx-font-family: 'System';"/>
     </HBox>
 </VBox>

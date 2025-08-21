@@ -3,51 +3,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.project.dosmart.controllers.AuthController"
       style="-fx-background-color: #FFFFFF;">
-
     <padding>
-        <Insets bottom="50.0" left="60.0" right="60.0" top="50.0"/>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
     </padding>
-
-    <VBox alignment="CENTER" spacing="10">
-        <Label text="🔒" style="-fx-font-size: 48px;"/>
-        <Label text="АВТОРИЗАЦІЯ"
-               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
-        <Label text="ВВЕДІТЬ ПІН-КОД ДЛЯ ДОСТУПУ"
-               style="-fx-font-size: 13px; -fx-text-fill: #666666;"/>
+    <VBox alignment="CENTER" spacing="10.0">
+        <Label text="🔒" style="-fx-font-size: 60px;"/>
+        <Label text="Вітаємо в DoSmart"
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+        <Label text="Для подальшого користування програмою, необхідно авторизуватися."
+               wrapText="true"
+               style="-fx-font-size: 18px; -fx-alignment: center; -fx-text-fill: #666666;"/>
     </VBox>
-
-    <VBox alignment="CENTER" spacing="15.0">
-        <HBox alignment="CENTER" spacing="10.0" maxWidth="250">
-            <PasswordField fx:id="_pinField" maxWidth="180" minWidth="180" promptText="4 ЦИФРИ"
+    <VBox alignment="CENTER" spacing="20.0">
+        <HBox alignment="CENTER" maxWidth="250">
+            <PasswordField fx:id="_pinField" maxWidth="200" minWidth="200" maxHeight="50" minHeight="50"
                            style="-fx-font-size: 24px; -fx-alignment: center; -fx-background-color: #FFFFFF;
                                   -fx-border-color: #CCCCCC; -fx-border-width: 2; -fx-background-radius: 0;
                                   -fx-border-radius: 0; -fx-focus-color: #333333; -fx-faint-focus-color: transparent;
                                   -fx-prompt-text-fill: #AAAAAA; -fx-text-fill: #333333; -fx-font-family: 'System';"/>
-            <TextField fx:id="_visiblePinField" maxWidth="180" minWidth="180" promptText="4 ЦИФРИ"
+            <TextField fx:id="_visiblePinField" maxWidth="200" minWidth="200" maxHeight="50" minHeight="50"
                        style="-fx-font-size: 24px; -fx-alignment: center; -fx-background-color: #FFFFFF;
                               -fx-border-color: #CCCCCC; -fx-border-width: 2; -fx-background-radius: 0;
                               -fx-border-radius: 0; -fx-focus-color: #333333; -fx-faint-focus-color: transparent;
                               -fx-prompt-text-fill: #AAAAAA; -fx-text-fill: #333333; -fx-font-family: 'System';"/>
-            <Button fx:id="_toggleVisibilityButton" text="🔒" prefWidth="50" prefHeight="50"
-                    style="-fx-font-size: 18px; -fx-background-color: #F0F0F0; -fx-text-fill: #333333;
+            <Button fx:id="_toggleVisibilityButton" text="🔒" maxWidth="50" minWidth="50" maxHeight="50" minHeight="50"
+                    style="-fx-font-size: 20px; -fx-background-color: #FFFFFF; -fx-text-fill: #333333;
                            -fx-background-radius: 0; -fx-border-width: 2; -fx-border-color: #CCCCCC;
                            -fx-cursor: hand; -fx-border-radius: 0;"/>
         </HBox>
-
         <Label fx:id="_attemptsLabel"
-               style="-fx-font-size: 12px; -fx-text-fill: #666666; -fx-font-family: 'System';"/>
+               style="-fx-font-size: 14px; -fx-text-fill: #666666; -fx-font-family: 'System';"/>
     </VBox>
-
-    <Button fx:id="_unlockButton" text="РОЗБЛОКУВАТИ" prefWidth="220" prefHeight="45"
-            style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #333333;
-                   -fx-text-fill: white; -fx-background-radius: 0; -fx-border-width: 0;
+    <HBox alignment="CENTER" maxWidth="250">
+        <Button fx:id="_unlockButton" text="РОЗБЛОКУВАТИ" maxWidth="250" minWidth="250" maxHeight="50" minHeight="50"
+                style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-background-color: #333333;
+                   -fx-text-fill: #FFFFFF; -fx-background-radius: 0; -fx-border-width: 0;
                    -fx-cursor: hand; -fx-font-family: 'System';"/>
-
+    </HBox>
     <HBox alignment="CENTER">
         <Label fx:id="_messageLabel" wrapText="true" textAlignment="CENTER"
-               style="-fx-font-size: 13px; -fx-font-family: 'System';"/>
+               style="-fx-font-size: 14px; -fx-text-fill: #FF0000; -fx-font-family: 'System';"/>
     </HBox>
 </VBox>

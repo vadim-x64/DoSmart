@@ -14,133 +14,99 @@
             fx:controller="com.project.dosmart.controllers.MainController"
             fx:id="_rootPane"
             style="-fx-background-color: #FFFFFF;">
-
     <left>
-        <VBox prefWidth="300" maxWidth="300" minWidth="300"
-              style="-fx-background-color: #F8F8F8; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
-
-            <VBox alignment="CENTER" spacing="5">
-                <padding>
-                    <Insets bottom="30.0" left="20.0" right="20.0" top="40.0"/>
-                </padding>
-
-                <ImageView fitHeight="52" fitWidth="52" pickOnBounds="true" preserveRatio="true">
-                    <Image url="https://cdn-icons-png.flaticon.com/128/11642/11642666.png"/>
-                </ImageView>
-
-                <Label text="DoSmart"
-                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
-            </VBox>
-
-            <VBox spacing="2" VBox.vgrow="ALWAYS">
+        <VBox maxWidth="300" minWidth="300"
+              style="-fx-background-color: #EEEEEE; -fx-border-color: #CCCCCC; -fx-border-width: 0 2 0 0;">
+            <VBox alignment="CENTER" spacing="5.0">
                 <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                 </padding>
-
-                <Button fx:id="_addTodoButton" text="ДОДАТИ СПРАВУ"
-                        maxWidth="Infinity" prefHeight="50"
-                        style="-fx-background-color: #333333; -fx-text-fill: white; -fx-font-size: 14px;
+                <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@logo.png"/>
+                </ImageView>
+                <Label text="DoSmart"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+            </VBox>
+            <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+                <Button fx:id="_addTodoButton" text="ДОДАТИ ЗАВДАННЯ"
+                        maxWidth="Infinity" prefHeight="70"
+                        style="-fx-background-color: #333333; -fx-text-fill: #FFFFFF; -fx-font-size: 18px;
                                -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
                                -fx-cursor: hand;"/>
-
-                <Button fx:id="_updateTodoButton" text="ОНОВИТИ СПРАВУ"
-                        maxWidth="Infinity" prefHeight="50"
-                        style="-fx-background-color: #666666; -fx-text-fill: white; -fx-font-size: 14px;
-                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
-                               -fx-cursor: hand;"/>
-
-                <Region prefHeight="15"/>
-
-                <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ СПРАВУ"
-                        maxWidth="Infinity" prefHeight="50"
-                        style="-fx-background-color: #999999; -fx-text-fill: white; -fx-font-size: 14px;
-                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
-                               -fx-cursor: hand;"/>
-
-                <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"
-                        maxWidth="Infinity" prefHeight="50"
-                        style="-fx-background-color: #999999; -fx-text-fill: white; -fx-font-size: 14px;
-                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
-                               -fx-cursor: hand;"/>
-
-                <Button fx:id="_deleteAllButton" text="ВИДАЛИТИ ВСІ"
-                        maxWidth="Infinity" prefHeight="50"
-                        style="-fx-background-color: #999999; -fx-text-fill: white; -fx-font-size: 14px;
-                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
-                               -fx-cursor: hand;"/>
-
-                <Region prefHeight="15"/>
-
-                <Button fx:id="_refreshButton" text="ОНОВИТИ"
+                <Region prefHeight="20"/>
+                <Button fx:id="_updateTodoButton" text="РЕДАГУВАТИ ЗАВДАННЯ"
                         maxWidth="Infinity" prefHeight="50"
                         style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
                                -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
                                -fx-cursor: hand;"/>
-
+                <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ ЗАВДАННЯ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+                <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+                <Button fx:id="_deleteAllButton" text="ОЧИСТИТИ СПИСОК"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+                <Button fx:id="_refreshButton" text="ОНОВИТИ СПИСОК"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
                 <Button fx:id="_exportButton" text="ЕКСПОРТ"
                         maxWidth="Infinity" prefHeight="50"
                         style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
                                -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
                                -fx-cursor: hand;"/>
-
                 <Button fx:id="_importButton" text="ІМПОРТ"
                         maxWidth="Infinity" prefHeight="50"
                         style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
                                -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
                                -fx-cursor: hand;"/>
-
-                <Button fx:id="_infoButton" text="ІНФОРМАЦІЯ"
+                <Button fx:id="_infoButton" text="ПРО ПРОГРАМУ"
                         maxWidth="Infinity" prefHeight="50"
                         style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
                                -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0; -fx-cursor: hand;"/>
-
-                <Region prefHeight="15"/>
-
                 <Button fx:id="_pinCodeButton" text="ВСТАНОВИТИ ПІН-КОД"
                         maxWidth="Infinity" prefHeight="50"
-                        style="-fx-background-color: #E0E0E0; -fx-text-fill: #333333; -fx-font-size: 13px;
-                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 1;
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
                                -fx-border-color: #CCCCCC; -fx-cursor: hand;"/>
             </VBox>
-
             <VBox alignment="CENTER">
                 <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="10.0"/>
                 </padding>
-                <Label text="© 2025 DoSmart"
-                       style="-fx-font-size: 11px; -fx-text-fill: #888888;"/>
-                <Label text="Task Manager"
-                       style="-fx-font-size: 10px; -fx-text-fill: #AAAAAA;"/>
+                <Label text="© 2025 DoSmart Application"
+                       style="-fx-font-size: 12px; -fx-text-fill: #999999;"/>
             </VBox>
         </VBox>
     </left>
-
     <center>
         <VBox style="-fx-background-color: #FFFFFF;">
-
             <ListView fx:id="_todoList" VBox.vgrow="ALWAYS" prefHeight="700" maxHeight="Infinity"
                       style="-fx-background-color: #FFFFFF; -fx-border-width: 0;
                              -fx-focus-color: transparent; -fx-faint-focus-color: transparent;
-                             -fx-selection-bar: #F0F0F0; -fx-selection-bar-non-focused: #F8F8F8;
-                             -fx-font-size: 14px; -fx-font-family: 'System';"/>
-
-            <Region prefHeight="1" maxHeight="1" minHeight="1"
-                    style="-fx-background-color: #E0E0E0;"/>
-
-            <VBox spacing="5" prefHeight="300" maxHeight="300" minHeight="300"
-                  style="-fx-background-color: #FAFAFA;">
-                <padding>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="15.0"/>
-                </padding>
-
-                <Label text="ОПИС СПРАВИ"
-                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
-
+                             -fx-selection-bar: #CCCCCC; -fx-selection-bar-non-focused: #EEEEEE;
+                             -fx-font-size: 18px; -fx-font-family: 'System';"/>
+            <Region prefHeight="2" maxHeight="2" minHeight="2"
+                    style="-fx-background-color: #CCCCCC;"/>
+            <VBox spacing="5.0" prefHeight="300" maxHeight="300" minHeight="300"
+                  style="-fx-background-color: #FFFFFF;">
                 <TextArea fx:id="_description" editable="false" wrapText="true"
                           VBox.vgrow="ALWAYS"
-                          style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0;
-                                 -fx-border-width: 1; -fx-background-radius: 0; -fx-border-radius: 0;
-                                 -fx-font-size: 13px; -fx-text-fill: #333333; -fx-font-family: 'System';
+                          style="-fx-background-color: #FFFFFF; -fx-border-color: transparent;
+                                 -fx-border-width: 0; -fx-background-radius: 0; -fx-border-radius: 0;
+                                 -fx-font-size: 18px; -fx-text-fill: #333333; -fx-font-family: 'System';
                                  -fx-focus-color: transparent; -fx-faint-focus-color: transparent;"/>
             </VBox>
         </VBox>

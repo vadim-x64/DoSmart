@@ -17,6 +17,8 @@ public class AddTodoController {
     private DatePicker _deadlineDate;
     @FXML
     private Button _addButton;
+    @FXML
+    private Label _titleLabel;
 
     private TodoService _todoService;
     private Stage _stage;
@@ -37,7 +39,8 @@ public class AddTodoController {
         _name.setText(todo.getName());
         _description.setText(todo.getDescription());
         _deadlineDate.setValue(todo.getDeadlineDate());
-        _addButton.setText("Оновити");
+        _addButton.setText("ОНОВИТИ");
+        _titleLabel.setText("ОНОВИТИ СПРАВУ");
     }
 
     @FXML
