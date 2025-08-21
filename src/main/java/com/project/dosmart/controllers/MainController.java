@@ -30,7 +30,12 @@ public class MainController {
     private Button _deleteSelectedButton;
     @FXML
     private Button _deleteAllButton;
-
+    @FXML
+    private Button _refreshButton;
+    @FXML
+    private Button _exportButton;
+    @FXML
+    private Button _importButton;
     @FXML
     private ListView<Todo> _todoList;
     @FXML
@@ -55,6 +60,9 @@ public class MainController {
         _deleteTodoButton.setOnAction(e -> deleteSingleTodo());
         _deleteSelectedButton.setOnAction(e -> deleteSelectedTodos());
         _deleteAllButton.setOnAction(e -> deleteAllTodos());
+        _refreshButton.setOnAction(e -> refreshTodos());
+        _exportButton.setOnAction(e -> exportTodos());
+        _importButton.setOnAction(e -> importTodos());
 
         _todoList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -71,6 +79,20 @@ public class MainController {
                 _todoList.getSelectionModel().clearSelection();
             }
         });
+    }
+
+    private void refreshTodos() {
+        _todoService.refreshTodos();
+        _description.clear();
+        _todoList.getSelectionModel().clearSelection();
+    }
+
+    private void exportTodos() {
+        _todoService.exportTodos(_primaryStage);
+    }
+
+    private void importTodos() {
+        _todoService.importTodos(_primaryStage);
     }
 
     private void openUpdateTodoDialog() {

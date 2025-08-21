@@ -9,20 +9,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 
+<?import javafx.scene.control.Separator?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.project.dosmart.controllers.MainController"
             fx:id="_rootPane">
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER">
+        <VBox spacing="10.0">
             <BorderPane.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </BorderPane.margin>
-            <Button fx:id="_addTodoButton" text="ДОДАТИ СПРАВУ"/>
-            <Button fx:id="_updateTodoButton" text="ОНОВИТИ СПРАВУ"/>
-            <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ СПРАВУ"/>
-            <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"/>
-            <Button fx:id="_deleteAllButton" text="ВИДАЛИТИ ВСІ"/>
-        </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Button fx:id="_addTodoButton" text="ДОДАТИ СПРАВУ"/>
+                <Button fx:id="_updateTodoButton" text="ОНОВИТИ СПРАВУ"/>
+                <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ СПРАВУ"/>
+                <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"/>
+                <Button fx:id="_deleteAllButton" text="ВИДАЛИТИ ВСІ"/>
+            </HBox>
+            <Separator/>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Button fx:id="_refreshButton" text="ОНОВИТИ"/>
+                <Button fx:id="_exportButton" text="ЕКСПОРТ"/>
+                <Button fx:id="_importButton" text="ІМПОРТ"/>
+            </HBox>
+        </VBox>
     </top>
     <center>
         <SplitPane dividerPositions="0.4" BorderPane.alignment="CENTER">
