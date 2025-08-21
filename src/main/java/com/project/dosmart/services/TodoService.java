@@ -5,6 +5,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.project.dosmart.models.Todo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListCell;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,5 +61,28 @@ public class TodoService {
             _objectMapper.writeValue(new File(FILE_PATH), new ArrayList<>(_todos));
         } catch (IOException ignored) {
         }
+    }
+
+    public void deleteTodo(int index) {
+        if (index >= 0 && index < _todos.size()) {
+            _todos.remove(index);
+            saveTodo();
+        }
+    }
+
+    public void deleteSelectedTodos(List<Integer> indexes) {
+        indexes.stream()
+                .sorted((a, b) -> Integer.compare(b, a))
+                .forEach(index -> {
+                    if(index >= 0 &&  index < _todos.size()) {
+                        _todos.remove((int) index);
+                    }
+                });
+        saveTodo();
+    }
+
+    public void deleteAllTodos() {
+        _todos.clear();
+        saveTodo();
     }
 }

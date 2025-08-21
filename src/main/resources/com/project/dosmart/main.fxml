@@ -19,6 +19,9 @@
             </BorderPane.margin>
             <Button fx:id="_addTodoButton" text="ДОДАТИ СПРАВУ"/>
             <Button fx:id="_updateTodoButton" text="ОНОВИТИ СПРАВУ"/>
+            <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ СПРАВУ"/>
+            <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"/>
+            <Button fx:id="_deleteAllButton" text="ВИДАЛИТИ ВСІ"/>
         </HBox>
     </top>
     <center>
