@@ -16,7 +16,7 @@ import java.util.Map;
 public class PinCodeService {
 
     private static final String APP_DIR = ".dosmart";
-    private static final String PIN_FILE_NAME = "pin.json";
+    private static final String PIN_FILE_NAME = "app.json";
     private final String PIN_FILE_PATH;
     private final ObjectMapper _objectMapper;
     private int _failedAttempts = 0;

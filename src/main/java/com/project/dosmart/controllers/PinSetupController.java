@@ -21,6 +21,8 @@ public class PinSetupController {
     private Button _toggleVisibilityButton;
     @FXML
     private Label _messageLabel;
+    @FXML
+    private Label _confirmLabel;
 
     private PinCodeService _pinCodeService;
     private Stage _stage;
@@ -42,7 +44,9 @@ public class PinSetupController {
             _confirmPinField.setManaged(false);
             _visibleConfirmPinField.setVisible(false);
             _visibleConfirmPinField.setManaged(false);
-            _setupButton.setText("Зняти пін-код");
+            _confirmLabel.setVisible(false);
+            _confirmLabel.setManaged(false);
+            _setupButton.setText("ЗНЯТИ ПІН-КОД");
         }
     }
 
@@ -128,7 +132,7 @@ public class PinSetupController {
         String pin = _pinVisible ? _visiblePinField.getText().trim() : _pinField.getText().trim();
 
         if (pin.length() != 4) {
-            showError("Пін-код має містити рівно 4 цифри");
+            showError("Пін-код має містити 4 цифри");
             return;
         }
 
@@ -149,7 +153,7 @@ public class PinSetupController {
             String confirmPin = _pinVisible ? _visibleConfirmPinField.getText().trim() : _confirmPinField.getText().trim();
 
             if (confirmPin.length() != 4) {
-                showError("Підтвердження має містити рівно 4 цифри");
+                showError("Підтвердження має містити 4 цифри");
                 return;
             }
 

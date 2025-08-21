@@ -40,6 +40,8 @@ public class MainController {
     @FXML
     private Button _pinCodeButton;
     @FXML
+    private Button _infoButton;
+    @FXML
     private ListView<Todo> _todoList;
     @FXML
     private TextArea _description;
@@ -73,6 +75,7 @@ public class MainController {
         _exportButton.setOnAction(e -> exportTodos());
         _importButton.setOnAction(e -> importTodos());
         _pinCodeButton.setOnAction(e -> handlePinCodeAction());
+        _infoButton.setOnAction(e -> showInfoDialog());
         _todoList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         _todoList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -88,6 +91,14 @@ public class MainController {
                 _todoList.getSelectionModel().clearSelection();
             }
         });
+    }
+
+    private void showInfoDialog() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Інформація");
+        alert.setHeaderText("DoSmart");
+        alert.setContentText("Версія: 1.0\nРозробник: [Ваше ім'я або назва компанії]");
+        alert.showAndWait();
     }
 
     private void updatePinButtonText() {
@@ -113,8 +124,9 @@ public class MainController {
             Stage stage = new Stage();
             controller.setStage(stage);
             controller.setRemovingMode(removing);
-            stage.setTitle(removing ? "Зняти пін-код" : "Встановити пін-код");
-            stage.setScene(new Scene(root));
+            stage.setResizable(true);
+            stage.setTitle("Налаштування пін-кода");
+            stage.setScene(new Scene(root, 500, 500));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
             stage.showAndWait();
@@ -143,7 +155,7 @@ public class MainController {
 
         if (selectedTodo == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Увага");
+            alert.setTitle("Попередження");
             alert.setHeaderText(null);
             alert.setContentText("Спочатку виберіть справу для оновлення!");
             alert.showAndWait();
@@ -161,6 +173,7 @@ public class MainController {
             controller.setTodoService(_todoService);
             Stage stage = new Stage();
             controller.setStage(stage);
+            stage.setResizable(true);
 
             if (todoToEdit != null) {
                 controller.setTodoForEditing(todoToEdit, editIndex);
@@ -169,7 +182,7 @@ public class MainController {
                 stage.setTitle("Додати справу");
             }
 
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root, 500, 500));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
             stage.showAndWait();
@@ -185,8 +198,9 @@ public class MainController {
             addTodoController.setTodoService(_todoService);
             Stage stage = new Stage();
             addTodoController.setStage(stage);
-            stage.setTitle("Додати справу");
-            stage.setScene(new Scene(root));
+            stage.setResizable(true);
+            stage.setTitle("Нове завдання");
+            stage.setScene(new Scene(root, 500, 500));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
             stage.showAndWait();
@@ -199,11 +213,11 @@ public class MainController {
         int selectedIndex = _todoList.getSelectionModel().getSelectedIndex();
 
         if (selectedTodo == null) {
-            showWarningAlert("Спочатку виберіть справу для видалення!");
+            showWarningAlert("Спочатку виберіть елемент для видалення!");
             return;
         }
 
-        if (showConfirmationAlert("Ви впевнені, що хочете видалити справу \"" + selectedTodo.getName() + "\"?")) {
+        if (showConfirmationAlert("Ви впевнені, що хочете видалити \"" + selectedTodo.getName() + "\"?")) {
             _todoService.deleteTodo(selectedIndex);
             _description.clear();
         }
@@ -213,11 +227,11 @@ public class MainController {
         ObservableList<Integer> selectedIndices = _todoList.getSelectionModel().getSelectedIndices();
 
         if (selectedIndices.isEmpty()) {
-            showWarningAlert("Спочатку виберіть справи для видалення!");
+            showWarningAlert("Спочатку виберіть елементи для видалення!");
             return;
         }
 
-        if (showConfirmationAlert("Ви впевнені, що хочете видалити " + selectedIndices.size() + " справ(и)?")) {
+        if (showConfirmationAlert("Ви впевнені, що хочете видалити " + selectedIndices.size() + " елементів?")) {
             _todoService.deleteSelectedTodos(new ArrayList<>(selectedIndices));
             _description.clear();
         }
@@ -229,7 +243,7 @@ public class MainController {
             return;
         }
 
-        if (showConfirmationAlert("Ви впевнені, що хочете видалити ВСІ справи? Цю дію не можна скасувати!")) {
+        if (showConfirmationAlert("Ви впевнені, що хочете видалити всі справи? Цю дію не можна скасувати!")) {
             _todoService.deleteAllTodos();
             _description.clear();
         }
@@ -237,7 +251,7 @@ public class MainController {
 
     private void showWarningAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Увага");
+        alert.setTitle("Попередження");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

@@ -36,10 +36,11 @@ public class Main extends Application {
         mainController.setTodoService(todoService);
         mainController.setPinCodeService(pinCodeService);
         mainController.setPrimaryStage(primaryStage);
-        primaryStage.setTitle("TODO");
+        primaryStage.setTitle("DoSmart");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setMaximized(true);
+        primaryStage.setResizable(true);
 
         primaryStage.setOnCloseRequest(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -63,9 +64,9 @@ public class Main extends Application {
         authController.setStage(authStage);
         authController.setPinCodeService(pinCodeService);
         authStage.setTitle("Авторизація");
-        authStage.setScene(new Scene(root));
+        authStage.setScene(new Scene(root, 500, 500));
         authStage.initModality(Modality.APPLICATION_MODAL);
-        authStage.setResizable(false);
+        authStage.setResizable(true);
         authStage.showAndWait();
 
         return authController.isAuthenticated();

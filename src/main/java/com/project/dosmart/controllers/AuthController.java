@@ -93,7 +93,7 @@ public class AuthController {
             _pinField.setManaged(false);
             _visiblePinField.setVisible(true);
             _visiblePinField.setManaged(true);
-            _toggleVisibilityButton.setText("👁");
+            _toggleVisibilityButton.setText("🔓");
             _visiblePinField.requestFocus();
         } else {
             _visiblePinField.setVisible(false);
@@ -176,7 +176,7 @@ public class AuthController {
         } else {
             long minutes = remainingSeconds / 60;
             long seconds = remainingSeconds % 60;
-            _messageLabel.setText(String.format("Заблоковано на %02d:%02d", minutes, seconds));
+            _messageLabel.setText(String.format("Спробуйте знову через %02d:%02d", minutes, seconds));
             _messageLabel.setStyle("-fx-text-fill: red;");
         }
     }

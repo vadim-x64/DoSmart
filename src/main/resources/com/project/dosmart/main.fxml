@@ -2,51 +2,147 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.project.dosmart.controllers.MainController"
-            fx:id="_rootPane">
-    <top>
-        <VBox spacing="10.0">
-            <BorderPane.margin>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-            </BorderPane.margin>
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Button fx:id="_addTodoButton" text="ДОДАТИ СПРАВУ"/>
-                <Button fx:id="_updateTodoButton" text="ОНОВИТИ СПРАВУ"/>
-                <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ СПРАВУ"/>
-                <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"/>
-                <Button fx:id="_deleteAllButton" text="ВИДАЛИТИ ВСІ"/>
-            </HBox>
-            <Separator/>
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Button fx:id="_refreshButton" text="ОНОВИТИ"/>
-                <Button fx:id="_exportButton" text="ЕКСПОРТ"/>
-                <Button fx:id="_importButton" text="ІМПОРТ"/>
-                <Button fx:id="_pinCodeButton" text="ВСТАНОВИТИ ПІН-КОД"/>
-            </HBox>
-        </VBox>
-    </top>
-    <center>
-        <SplitPane dividerPositions="0.4" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0"/>
-            </BorderPane.margin>
-            <ListView fx:id="_todoList"/>
-            <VBox spacing="5">
+            fx:id="_rootPane"
+            style="-fx-background-color: #FFFFFF;">
+
+    <left>
+        <VBox prefWidth="300" maxWidth="300" minWidth="300"
+              style="-fx-background-color: #F8F8F8; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 0 0;">
+
+            <VBox alignment="CENTER" spacing="5">
                 <padding>
-                    <Insets left="10.0"/>
+                    <Insets bottom="30.0" left="20.0" right="20.0" top="40.0"/>
                 </padding>
-                <Label text="Опис справи:"/>
-                <TextArea fx:id="_description" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+
+                <ImageView fitHeight="52" fitWidth="52" pickOnBounds="true" preserveRatio="true">
+                    <Image url="https://cdn-icons-png.flaticon.com/128/11642/11642666.png"/>
+                </ImageView>
+
+                <Label text="DoSmart"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
             </VBox>
-        </SplitPane>
+
+            <VBox spacing="2" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+
+                <Button fx:id="_addTodoButton" text="ДОДАТИ СПРАВУ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #333333; -fx-text-fill: white; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Button fx:id="_updateTodoButton" text="ОНОВИТИ СПРАВУ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #666666; -fx-text-fill: white; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Region prefHeight="15"/>
+
+                <Button fx:id="_deleteTodoButton" text="ВИДАЛИТИ СПРАВУ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #999999; -fx-text-fill: white; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Button fx:id="_deleteSelectedButton" text="ВИДАЛИТИ ВИБРАНІ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #999999; -fx-text-fill: white; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Button fx:id="_deleteAllButton" text="ВИДАЛИТИ ВСІ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #999999; -fx-text-fill: white; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Region prefHeight="15"/>
+
+                <Button fx:id="_refreshButton" text="ОНОВИТИ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Button fx:id="_exportButton" text="ЕКСПОРТ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Button fx:id="_importButton" text="ІМПОРТ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0;
+                               -fx-cursor: hand;"/>
+
+                <Button fx:id="_infoButton" text="ІНФОРМАЦІЯ"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #CCCCCC; -fx-text-fill: #333333; -fx-font-size: 14px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 0; -fx-cursor: hand;"/>
+
+                <Region prefHeight="15"/>
+
+                <Button fx:id="_pinCodeButton" text="ВСТАНОВИТИ ПІН-КОД"
+                        maxWidth="Infinity" prefHeight="50"
+                        style="-fx-background-color: #E0E0E0; -fx-text-fill: #333333; -fx-font-size: 13px;
+                               -fx-font-weight: bold; -fx-background-radius: 0; -fx-border-width: 1;
+                               -fx-border-color: #CCCCCC; -fx-cursor: hand;"/>
+            </VBox>
+
+            <VBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="10.0"/>
+                </padding>
+                <Label text="© 2025 DoSmart"
+                       style="-fx-font-size: 11px; -fx-text-fill: #888888;"/>
+                <Label text="Task Manager"
+                       style="-fx-font-size: 10px; -fx-text-fill: #AAAAAA;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox style="-fx-background-color: #FFFFFF;">
+
+            <ListView fx:id="_todoList" VBox.vgrow="ALWAYS" prefHeight="700" maxHeight="Infinity"
+                      style="-fx-background-color: #FFFFFF; -fx-border-width: 0;
+                             -fx-focus-color: transparent; -fx-faint-focus-color: transparent;
+                             -fx-selection-bar: #F0F0F0; -fx-selection-bar-non-focused: #F8F8F8;
+                             -fx-font-size: 14px; -fx-font-family: 'System';"/>
+
+            <Region prefHeight="1" maxHeight="1" minHeight="1"
+                    style="-fx-background-color: #E0E0E0;"/>
+
+            <VBox spacing="5" prefHeight="300" maxHeight="300" minHeight="300"
+                  style="-fx-background-color: #FAFAFA;">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="15.0"/>
+                </padding>
+
+                <Label text="ОПИС СПРАВИ"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
+
+                <TextArea fx:id="_description" editable="false" wrapText="true"
+                          VBox.vgrow="ALWAYS"
+                          style="-fx-background-color: #FFFFFF; -fx-border-color: #E0E0E0;
+                                 -fx-border-width: 1; -fx-background-radius: 0; -fx-border-radius: 0;
+                                 -fx-font-size: 13px; -fx-text-fill: #333333; -fx-font-family: 'System';
+                                 -fx-focus-color: transparent; -fx-faint-focus-color: transparent;"/>
+            </VBox>
+        </VBox>
     </center>
 </BorderPane>

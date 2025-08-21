@@ -18,7 +18,7 @@ import java.util.List;
 public class TodoService {
 
     private static final String APP_DIR = ".dosmart";
-    private static final String FILE_NAME = "todos.json";
+    private static final String FILE_NAME = "tasks.json";
     private final String FILE_PATH;
     private final ObjectMapper _objectMapper;
     private final ObservableList<Todo> _todos;
@@ -105,7 +105,7 @@ public class TodoService {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Експорт справ");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON файли", "*.json"));
-        fileChooser.setInitialFileName("todos_export.json");
+        fileChooser.setInitialFileName("export.json");
         File file = fileChooser.showSaveDialog(ownerStage);
 
         if (file != null) {
