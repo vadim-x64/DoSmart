@@ -34,8 +34,5 @@ build/
 ### VS Code ###
 .vscode/
 
-### Json ###
-todos.json
-
 ### Mac OS ###
 .DS_Store

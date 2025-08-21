@@ -66,8 +66,7 @@ public class TodoService {
 
         if (file.exists()) {
             try {
-                List<Todo> todoList = _objectMapper.readValue(file,
-                        _objectMapper.getTypeFactory().constructCollectionType(List.class, Todo.class));
+                List<Todo> todoList = _objectMapper.readValue(file, _objectMapper.getTypeFactory().constructCollectionType(List.class, Todo.class));
                 _todos.addAll(todoList);
             } catch (IOException ignored) {
             }
@@ -107,7 +106,6 @@ public class TodoService {
         fileChooser.setTitle("Експорт справ");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON файли", "*.json"));
         fileChooser.setInitialFileName("todos_export.json");
-
         File file = fileChooser.showSaveDialog(ownerStage);
 
         if (file != null) {
@@ -122,7 +120,6 @@ public class TodoService {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Імпорт справ");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON файли", "*.json"));
-
         File file = fileChooser.showOpenDialog(ownerStage);
 
         if (file != null && file.exists()) {

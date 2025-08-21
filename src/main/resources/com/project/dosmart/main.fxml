@@ -8,8 +8,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
-
 <?import javafx.scene.control.Separator?>
+
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.project.dosmart.controllers.MainController"
             fx:id="_rootPane">
@@ -30,6 +30,7 @@
                 <Button fx:id="_refreshButton" text="ОНОВИТИ"/>
                 <Button fx:id="_exportButton" text="ЕКСПОРТ"/>
                 <Button fx:id="_importButton" text="ІМПОРТ"/>
+                <Button fx:id="_pinCodeButton" text="ВСТАНОВИТИ ПІН-КОД"/>
             </HBox>
         </VBox>
     </top>

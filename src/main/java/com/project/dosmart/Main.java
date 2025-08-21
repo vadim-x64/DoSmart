@@ -1,6 +1,8 @@
 package com.project.dosmart;
 
+import com.project.dosmart.controllers.AuthController;
 import com.project.dosmart.controllers.MainController;
+import com.project.dosmart.services.PinCodeService;
 import com.project.dosmart.services.TodoService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.util.Optional;
 
@@ -18,15 +21,21 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        TodoService todoService = new TodoService();
+        PinCodeService pinCodeService = new PinCodeService();
 
+        if (pinCodeService.hasPinCode()) {
+            if (!showAuthDialog(pinCodeService)) {
+                return;
+            }
+        }
+
+        TodoService todoService = new TodoService();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main.fxml"));
         Parent root = fxmlLoader.load();
-
         MainController mainController = fxmlLoader.getController();
         mainController.setTodoService(todoService);
+        mainController.setPinCodeService(pinCodeService);
         mainController.setPrimaryStage(primaryStage);
-
         primaryStage.setTitle("TODO");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
@@ -36,13 +45,29 @@ public class Main extends Application {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Підтвердження");
             alert.setHeaderText("Ви впевнені, що хочете вийти?");
-
             Optional<ButtonType> result = alert.showAndWait();
+
             if (result.isPresent() && result.get() != ButtonType.OK) {
                 event.consume();
             }
         });
 
         primaryStage.show();
+    }
+
+    private boolean showAuthDialog(PinCodeService pinCodeService) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("auth.fxml"));
+        Parent root = fxmlLoader.load();
+        AuthController authController = fxmlLoader.getController();
+        Stage authStage = new Stage();
+        authController.setStage(authStage);
+        authController.setPinCodeService(pinCodeService);
+        authStage.setTitle("Авторизація");
+        authStage.setScene(new Scene(root));
+        authStage.initModality(Modality.APPLICATION_MODAL);
+        authStage.setResizable(false);
+        authStage.showAndWait();
+
+        return authController.isAuthenticated();
     }
 }

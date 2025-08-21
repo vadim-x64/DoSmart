@@ -1,6 +1,7 @@
 package com.project.dosmart.controllers;
 
 import com.project.dosmart.models.Todo;
+import com.project.dosmart.services.PinCodeService;
 import com.project.dosmart.services.TodoService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,16 +38,24 @@ public class MainController {
     @FXML
     private Button _importButton;
     @FXML
+    private Button _pinCodeButton;
+    @FXML
     private ListView<Todo> _todoList;
     @FXML
     private TextArea _description;
 
     private TodoService _todoService;
     private Stage _primaryStage;
+    private PinCodeService _pinCodeService;
 
     public void setTodoService(TodoService todoService) {
         _todoService = todoService;
         _todoList.setItems(_todoService.getTodos());
+    }
+
+    public void setPinCodeService(PinCodeService pinCodeService) {
+        _pinCodeService = pinCodeService;
+        updatePinButtonText();
     }
 
     public void setPrimaryStage(Stage primaryStage) {
@@ -63,7 +72,7 @@ public class MainController {
         _refreshButton.setOnAction(e -> refreshTodos());
         _exportButton.setOnAction(e -> exportTodos());
         _importButton.setOnAction(e -> importTodos());
-
+        _pinCodeButton.setOnAction(e -> handlePinCodeAction());
         _todoList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         _todoList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -79,6 +88,39 @@ public class MainController {
                 _todoList.getSelectionModel().clearSelection();
             }
         });
+    }
+
+    private void updatePinButtonText() {
+        if (_pinCodeService != null) {
+            _pinCodeButton.setText(_pinCodeService.hasPinCode() ? "ЗНЯТИ ПІН-КОД" : "ВСТАНОВИТИ ПІН-КОД");
+        }
+    }
+
+    private void handlePinCodeAction() {
+        if (_pinCodeService.hasPinCode()) {
+            openPinSetupDialog(true);
+        } else {
+            openPinSetupDialog(false);
+        }
+    }
+
+    private void openPinSetupDialog(boolean removing) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/project/dosmart/pinSetup.fxml"));
+            Parent root = fxmlLoader.load();
+            PinSetupController controller = fxmlLoader.getController();
+            controller.setPinCodeService(_pinCodeService);
+            Stage stage = new Stage();
+            controller.setStage(stage);
+            controller.setRemovingMode(removing);
+            stage.setTitle(removing ? "Зняти пін-код" : "Встановити пін-код");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(_primaryStage);
+            stage.showAndWait();
+            updatePinButtonText();
+        } catch (IOException ignored) {
+        }
     }
 
     private void refreshTodos() {
@@ -206,7 +248,6 @@ public class MainController {
         alert.setTitle("Підтвердження");
         alert.setHeaderText(null);
         alert.setContentText(message);
-
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
