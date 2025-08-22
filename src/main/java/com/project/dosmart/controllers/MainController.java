@@ -44,6 +44,8 @@ public class MainController {
     private ListView<Todo> _todoList;
     @FXML
     private TextArea _description;
+    @FXML
+    private TextField _searchField;
 
     private TodoService _todoService;
     private Stage _primaryStage;
@@ -89,6 +91,10 @@ public class MainController {
             if (event.getTarget().equals(_rootPane) || !(event.getTarget() instanceof Parent)) {
                 _todoList.getSelectionModel().clearSelection();
             }
+        });
+
+        _searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            _todoService.filterTodos(newValue);
         });
     }
 
@@ -145,6 +151,7 @@ public class MainController {
 
     private void refreshTodos() {
         _todoService.refreshTodos();
+        _searchField.clear();
         _description.clear();
         _todoList.getSelectionModel().clearSelection();
     }

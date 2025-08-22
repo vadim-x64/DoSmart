@@ -10,6 +10,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.project.dosmart.controllers.MainController"
             fx:id="_rootPane"
@@ -93,6 +95,18 @@
     </left>
     <center>
         <VBox style="-fx-background-color: #FFFFFF;">
+            <HBox alignment="CENTER_LEFT" spacing="10.0"
+                  style="-fx-background-color: #FAFAFA; -fx-border-color: #CCCCCC; -fx-border-width: 0 0 1 0;">
+                <padding>
+                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+                </padding>
+                <TextField fx:id="_searchField" promptText="🔍 Пошук"
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-font-size: 16px; -fx-background-color: #FFFFFF; -fx-text-fill: #333333;
+                                  -fx-border-color: #CCCCCC; -fx-border-width: 1; -fx-background-radius: 0;
+                                  -fx-border-radius: 0; -fx-focus-color: #333333; -fx-faint-focus-color: transparent;
+                                  -fx-prompt-text-fill: #AAAAAA; -fx-font-family: 'System';"/>
+            </HBox>
             <ListView fx:id="_todoList" VBox.vgrow="ALWAYS" prefHeight="700" maxHeight="Infinity"
                       style="-fx-background-color: #FFFFFF; -fx-border-width: 0;
                              -fx-focus-color: transparent; -fx-faint-focus-color: transparent;

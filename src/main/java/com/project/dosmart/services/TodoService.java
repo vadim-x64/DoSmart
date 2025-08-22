@@ -5,6 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.project.dosmart.models.Todo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
@@ -22,11 +23,13 @@ public class TodoService {
     private final String FILE_PATH;
     private final ObjectMapper _objectMapper;
     private final ObservableList<Todo> _todos;
+    private FilteredList<Todo> _filteredTodos;
 
     public TodoService() {
         _objectMapper = new ObjectMapper();
         _objectMapper.registerModule(new JavaTimeModule());
         _todos = FXCollections.observableArrayList();
+        _filteredTodos = new FilteredList<>(_todos);
         String userHome = System.getProperty("user.home");
         Path appDirPath = Paths.get(userHome, APP_DIR);
         FILE_PATH = Paths.get(userHome, APP_DIR, FILE_NAME).toString();
@@ -40,7 +43,7 @@ public class TodoService {
     }
 
     public ObservableList<Todo> getTodos() {
-        return _todos;
+        return _filteredTodos;
     }
 
     public void addTodo(Todo todo) {
@@ -128,6 +131,24 @@ public class TodoService {
                 saveTodo();
             } catch (IOException ignored) {
             }
+        }
+    }
+
+    public void filterTodos(String searchText) {
+        if (searchText == null || searchText.trim().isEmpty()) {
+            _filteredTodos.setPredicate(null);
+        } else {
+            String lowerCaseFilter = searchText.toLowerCase().trim();
+            _filteredTodos.setPredicate(todo -> {
+                if (todo.getName() != null && todo.getName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+
+                if (todo.getDescription() != null && todo.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
         }
     }
 }
