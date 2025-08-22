@@ -27,7 +27,6 @@ public class TodoService {
         _objectMapper = new ObjectMapper();
         _objectMapper.registerModule(new JavaTimeModule());
         _todos = FXCollections.observableArrayList();
-
         String userHome = System.getProperty("user.home");
         Path appDirPath = Paths.get(userHome, APP_DIR);
         FILE_PATH = Paths.get(userHome, APP_DIR, FILE_NAME).toString();

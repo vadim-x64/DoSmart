@@ -12,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -168,6 +167,7 @@ public class MainController {
             alert.setHeaderText(null);
             alert.setContentText("Спочатку виберіть елемент для оновлення!");
             alert.showAndWait();
+
             return;
         }
 
@@ -249,6 +249,7 @@ public class MainController {
     private void deleteAllTodos() {
         if (_todoService.getTodos().isEmpty()) {
             showWarningAlert("Немає елементів для видалення!");
+
             return;
         }
 
@@ -272,6 +273,7 @@ public class MainController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         Optional<ButtonType> result = alert.showAndWait();
+
         return result.isPresent() && result.get() == ButtonType.OK;
     }
 }

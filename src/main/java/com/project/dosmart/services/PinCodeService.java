@@ -51,6 +51,7 @@ public class PinCodeService {
             data.put("hash", hashPin(pinCode));
             data.put("failedAttempts", 0);
             _objectMapper.writeValue(new File(PIN_FILE_PATH), data);
+
             return true;
         } catch (IOException ignored) {
             return false;
@@ -79,9 +80,11 @@ public class PinCodeService {
 
             if (hashPin(pinCode).equals(storedHash)) {
                 resetFailedAttempts();
+
                 return true;
             } else {
                 incrementFailedAttempts();
+
                 return false;
             }
         } catch (IOException ignored) {
@@ -110,6 +113,7 @@ public class PinCodeService {
         if (now.isAfter(_lockoutTime)) {
             _lockoutTime = null;
             resetFailedAttempts();
+
             return false;
         }
 
@@ -153,8 +157,8 @@ public class PinCodeService {
             }
 
             return sb.toString();
-        } catch (NoSuchAlgorithmException ignored) {
-            throw new RuntimeException(ignored);
+        } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
+            throw new RuntimeException(noSuchAlgorithmException);
         }
     }
 

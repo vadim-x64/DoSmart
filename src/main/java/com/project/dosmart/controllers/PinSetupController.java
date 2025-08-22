@@ -80,11 +80,13 @@ public class PinSetupController {
         textField.textProperty().addListener((obs, oldText, newText) -> {
             if (!newText.matches("\\d*")) {
                 textField.setText(oldText);
+
                 return;
             }
 
             if (newText.length() > 4) {
                 textField.setText(newText.substring(0, 4));
+
                 return;
             }
 
@@ -133,13 +135,13 @@ public class PinSetupController {
 
         if (pin.length() != 4) {
             showError("Пін-код повинен містити 4 цифри");
+
             return;
         }
 
         if (_isRemoving) {
             if (_pinCodeService.verifyPinCode(pin)) {
                 _pinCodeService.removePinCode();
-                //showSuccess("Пін-код успішно знято");
                 _stage.close();
             } else {
                 if (_pinCodeService.isLockedOut()) {
@@ -154,12 +156,14 @@ public class PinSetupController {
 
             if (confirmPin.length() != 4) {
                 showError("Підтвердження має містити 4 цифри");
+
                 return;
             }
 
             if (!pin.equals(confirmPin)) {
                 showError("Пін-коди не співпадають");
                 clearConfirmFields();
+
                 return;
             }
 

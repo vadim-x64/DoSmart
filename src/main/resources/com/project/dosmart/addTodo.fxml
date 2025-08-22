@@ -6,17 +6,14 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.project.dosmart.controllers.AddTodoController"
       style="-fx-background-color: #FFFFFF;">
-
     <padding>
         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
     </padding>
-
     <VBox alignment="CENTER" spacing="10.0">
         <Label text="📄" style="-fx-font-size: 60px;"/>
         <Label fx:id="_titleLabel" text="СТВОРИТИ ЗАВДАННЯ"
                style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
     </VBox>
-
     <VBox spacing="20.0" alignment="CENTER" maxWidth="400">
         <VBox>
             <Label text="НАЗВА*"
@@ -27,7 +24,6 @@
                               -fx-border-radius: 0; -fx-focus-color: #333333; -fx-faint-focus-color: transparent;
                               -fx-prompt-text-fill: #AAAAAA; -fx-font-family: 'System';"/>
         </VBox>
-
         <VBox>
             <Label text="ОПИС (необов'язково)"
                    style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
@@ -37,7 +33,6 @@
                              -fx-border-radius: 0; -fx-focus-color: #333333; -fx-faint-focus-color: transparent;
                              -fx-prompt-text-fill: #AAAAAA; -fx-font-family: 'System';"/>
         </VBox>
-
         <VBox>
             <Label text="ДЕДЛАЙН (необов'язково)"
                    style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #666666;"/>
@@ -48,7 +43,6 @@
                                -fx-font-family: 'System';"/>
         </VBox>
     </VBox>
-
     <HBox alignment="CENTER" maxWidth="250">
         <Button fx:id="_addButton" text="СТВОРИТИ" maxWidth="250" minWidth="250" maxHeight="50" minHeight="50"
                 style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-background-color: #333333;
