@@ -15,7 +15,7 @@
         </padding>
         <VBox alignment="CENTER">
             <ImageView fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                <Image url="@logo.png"/>
+                <Image url="@logox.png"/>
             </ImageView>
             <Label text="DoSmart" style="-fx-font-size: 60px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
             <Label text="Ваш особистий менеджер справ"

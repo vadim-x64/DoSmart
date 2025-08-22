@@ -24,7 +24,7 @@
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                 </padding>
                 <ImageView fitHeight="100" fitWidth="100" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@logo.png"/>
+                    <Image url="@logox.png"/>
                 </ImageView>
                 <Label text="DoSmart"
                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
