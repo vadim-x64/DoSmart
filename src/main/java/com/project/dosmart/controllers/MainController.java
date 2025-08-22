@@ -6,6 +6,7 @@ import com.project.dosmart.services.TodoService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -50,6 +51,8 @@ public class MainController {
     private TodoService _todoService;
     private Stage _primaryStage;
     private PinCodeService _pinCodeService;
+    private boolean _isDragging = false;
+    private int _dragStartIndex = -1;
 
     public void setTodoService(TodoService todoService) {
         _todoService = todoService;
@@ -87,6 +90,39 @@ public class MainController {
             }
         });
 
+        _todoList.setOnMousePressed(event -> {
+            if (event.isPrimaryButtonDown()) {
+                _isDragging = true;
+                _dragStartIndex = _todoList.getSelectionModel().getSelectedIndex();
+
+                if (!event.isControlDown() && !event.isShiftDown()) {
+                    _todoList.getSelectionModel().clearSelection();
+                }
+            }
+        });
+
+        _todoList.setOnMouseDragged(event -> {
+            if (_isDragging && event.isPrimaryButtonDown()) {
+                Node node = event.getPickResult().getIntersectedNode();
+                int currentIndex = getItemIndexFromNode(node);
+
+                if (currentIndex >= 0 && _dragStartIndex >= 0) {
+                    int startIndex = Math.min(_dragStartIndex, currentIndex);
+                    int endIndex = Math.max(_dragStartIndex, currentIndex);
+                    _todoList.getSelectionModel().clearSelection();
+
+                    for (int i = startIndex; i <= endIndex; i++) {
+                        _todoList.getSelectionModel().select(i);
+                    }
+                }
+            }
+        });
+
+        _todoList.setOnMouseReleased(event -> {
+            _isDragging = false;
+            _dragStartIndex = -1;
+        });
+
         _rootPane.setOnMouseClicked(event -> {
             if (event.getTarget().equals(_rootPane) || !(event.getTarget() instanceof Parent)) {
                 _todoList.getSelectionModel().clearSelection();
@@ -96,6 +132,22 @@ public class MainController {
         _searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             _todoService.filterTodos(newValue);
         });
+    }
+
+    private int getItemIndexFromNode(Node node) {
+        Node current = node;
+
+        while (current != null) {
+            if (current instanceof ListCell) {
+                ListCell<?> cell = (ListCell<?>) current;
+
+                return cell.getIndex();
+            }
+
+            current = current.getParent();
+        }
+
+        return -1;
     }
 
     private void showInfoDialog() {
