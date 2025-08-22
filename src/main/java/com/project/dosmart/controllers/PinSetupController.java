@@ -46,7 +46,7 @@ public class PinSetupController {
             _visibleConfirmPinField.setManaged(false);
             _confirmLabel.setVisible(false);
             _confirmLabel.setManaged(false);
-            _setupButton.setText("ЗНЯТИ ПІН-КОД");
+            _setupButton.setText("ЗНЯТИ");
         }
     }
 
@@ -132,14 +132,14 @@ public class PinSetupController {
         String pin = _pinVisible ? _visiblePinField.getText().trim() : _pinField.getText().trim();
 
         if (pin.length() != 4) {
-            showError("Пін-код має містити 4 цифри");
+            showError("Пін-код повинен містити 4 цифри");
             return;
         }
 
         if (_isRemoving) {
             if (_pinCodeService.verifyPinCode(pin)) {
                 _pinCodeService.removePinCode();
-                showSuccess("Пін-код успішно знято");
+                //showSuccess("Пін-код успішно знято");
                 _stage.close();
             } else {
                 if (_pinCodeService.isLockedOut()) {
@@ -164,10 +164,7 @@ public class PinSetupController {
             }
 
             if (_pinCodeService.setPinCode(pin)) {
-                showSuccess("Пін-код успішно встановлено");
                 _stage.close();
-            } else {
-                showError("Помилка при встановленні пін-кода");
             }
         }
     }
@@ -184,11 +181,5 @@ public class PinSetupController {
 
     private void showError(String message) {
         _messageLabel.setText(message);
-        _messageLabel.setStyle("-fx-text-fill: red;");
-    }
-
-    private void showSuccess(String message) {
-        _messageLabel.setText(message);
-        _messageLabel.setStyle("-fx-text-fill: green;");
     }
 }

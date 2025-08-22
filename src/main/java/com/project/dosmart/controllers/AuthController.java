@@ -109,7 +109,7 @@ public class AuthController {
         String pin = _pinVisible ? _visiblePinField.getText().trim() : _pinField.getText().trim();
 
         if (pin.length() < 4) {
-            _messageLabel.setText("Пін-код має містити 4 цифри");
+            _messageLabel.setText("Пін-код повинен містити 4 цифри");
             return;
         }
 

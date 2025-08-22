@@ -17,7 +17,7 @@
                wrapText="true"
                style="-fx-font-size: 18px; -fx-alignment: center; -fx-text-fill: #666666;"/>
     </VBox>
-    <VBox alignment="CENTER" spacing="20.0">
+    <VBox alignment="CENTER" spacing="10.0">
         <HBox alignment="CENTER" maxWidth="250">
             <PasswordField fx:id="_pinField" maxWidth="200" minWidth="200" maxHeight="50" minHeight="50"
                            style="-fx-font-size: 24px; -fx-alignment: center; -fx-background-color: #FFFFFF;

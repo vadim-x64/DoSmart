@@ -94,11 +94,20 @@ public class MainController {
     }
 
     private void showInfoDialog() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Інформація");
-        alert.setHeaderText("DoSmart");
-        alert.setContentText("Версія: 1.0\nРозробник: [Ваше ім'я або назва компанії]");
-        alert.showAndWait();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/project/dosmart/about.fxml"));
+            Parent root = fxmlLoader.load();
+            AboutController controller = fxmlLoader.getController();
+            Stage stage = new Stage();
+            controller.setStage(stage);
+            stage.setResizable(true);
+            stage.setTitle("Про програму");
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.initOwner(_primaryStage);
+            stage.show();
+        } catch (IOException ignored) {
+        }
     }
 
     private void updatePinButtonText() {
@@ -125,7 +134,7 @@ public class MainController {
             controller.setStage(stage);
             controller.setRemovingMode(removing);
             stage.setResizable(true);
-            stage.setTitle("Налаштування пін-кода");
+            stage.setTitle(removing ? "Зняти пін-код" : "Встановити пін-код");
             stage.setScene(new Scene(root, 700, 700));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
@@ -157,7 +166,7 @@ public class MainController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Попередження");
             alert.setHeaderText(null);
-            alert.setContentText("Спочатку виберіть справу для оновлення!");
+            alert.setContentText("Спочатку виберіть елемент для оновлення!");
             alert.showAndWait();
             return;
         }
@@ -177,9 +186,9 @@ public class MainController {
 
             if (todoToEdit != null) {
                 controller.setTodoForEditing(todoToEdit, editIndex);
-                stage.setTitle("Оновити справу");
+                stage.setTitle("Оновити завдання");
             } else {
-                stage.setTitle("Додати справу");
+                stage.setTitle("Додати завдання");
             }
 
             stage.setScene(new Scene(root, 700, 700));
@@ -199,7 +208,7 @@ public class MainController {
             Stage stage = new Stage();
             addTodoController.setStage(stage);
             stage.setResizable(true);
-            stage.setTitle("Нове завдання");
+            stage.setTitle("Додати завдання");
             stage.setScene(new Scene(root, 700, 700));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(_primaryStage);
@@ -239,11 +248,11 @@ public class MainController {
 
     private void deleteAllTodos() {
         if (_todoService.getTodos().isEmpty()) {
-            showWarningAlert("Немає справ для видалення!");
+            showWarningAlert("Немає елементів для видалення!");
             return;
         }
 
-        if (showConfirmationAlert("Ви впевнені, що хочете видалити всі справи? Цю дію не можна скасувати!")) {
+        if (showConfirmationAlert("Ви впевнені, що хочете очистити список? Всі завдання будуть видалені!")) {
             _todoService.deleteAllTodos();
             _description.clear();
         }

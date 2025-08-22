@@ -103,7 +103,7 @@ public class TodoService {
 
     public void exportTodos(Stage ownerStage) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Експорт справ");
+        fileChooser.setTitle("Експорт");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON файли", "*.json"));
         fileChooser.setInitialFileName("export.json");
         File file = fileChooser.showSaveDialog(ownerStage);
@@ -118,7 +118,7 @@ public class TodoService {
 
     public void importTodos(Stage ownerStage) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Імпорт справ");
+        fileChooser.setTitle("Імпорт");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON файли", "*.json"));
         File file = fileChooser.showOpenDialog(ownerStage);
 

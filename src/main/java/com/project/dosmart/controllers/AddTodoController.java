@@ -40,7 +40,7 @@ public class AddTodoController {
         _description.setText(todo.getDescription());
         _deadlineDate.setValue(todo.getDeadlineDate());
         _addButton.setText("ОНОВИТИ");
-        _titleLabel.setText("ОНОВИТИ СПРАВУ");
+        _titleLabel.setText("ОНОВИТИ ЗАВДАННЯ");
     }
 
     @FXML
@@ -57,7 +57,7 @@ public class AddTodoController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Помилка");
             alert.setHeaderText(null);
-            alert.setContentText("Назва справи є обов'язковою!");
+            alert.setContentText("Назва є обов'язковою!");
             alert.showAndWait();
             return;
         }
