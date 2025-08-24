@@ -47,7 +47,7 @@ public class TodoService {
     }
 
     public void addTodo(Todo todo) {
-        _todos.add(todo);
+        _todos.add(0, todo);
         saveTodo();
     }
 
@@ -127,7 +127,7 @@ public class TodoService {
         if (file != null && file.exists()) {
             try {
                 List<Todo> importedTodos = _objectMapper.readValue(file, _objectMapper.getTypeFactory().constructCollectionType(List.class, Todo.class));
-                _todos.addAll(importedTodos);
+                _todos.addAll(0, importedTodos);
                 saveTodo();
             } catch (IOException ignored) {
             }
