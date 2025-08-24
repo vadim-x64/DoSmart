@@ -10,6 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.12.1</junit.version>
+        <java.version>23</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -61,7 +62,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.todoapp.Main</mainClass>
+                    <mainClass>com.project.dosmart.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
